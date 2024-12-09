@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_static_component_heroes",
+  "info": {
+    "displayName": "Hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "ctaLabel": {
+      "type": "string",
+      "required": true
+    },
+    "ctaLink": {
+      "type": "string",
+      "required": true
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

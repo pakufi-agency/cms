@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_static_component_we_statments",
+  "info": {
+    "displayName": "weStatment"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
