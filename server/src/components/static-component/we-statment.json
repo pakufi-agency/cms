@@ -1,12 +1,21 @@
 {
   "collectionName": "components_static_component_we_statments",
   "info": {
-    "displayName": "weStatment"
+    "displayName": "weStatment",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "content": {
-      "type": "blocks",
+    "statmentOne": {
+      "type": "string",
+      "required": true
+    },
+    "statmentTwo": {
+      "type": "string",
+      "required": true
+    },
+    "statmentThree": {
+      "type": "string",
       "required": true
     }
   }

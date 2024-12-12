@@ -48,10 +48,13 @@ export interface StaticComponentHero extends Struct.ComponentSchema {
 export interface StaticComponentWeStatment extends Struct.ComponentSchema {
   collectionName: 'components_static_component_we_statments';
   info: {
+    description: '';
     displayName: 'weStatment';
   };
   attributes: {
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    statmentOne: Schema.Attribute.String & Schema.Attribute.Required;
+    statmentThree: Schema.Attribute.String & Schema.Attribute.Required;
+    statmentTwo: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
