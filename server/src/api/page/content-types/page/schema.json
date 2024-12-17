@@ -44,9 +44,12 @@
       "type": "dynamiczone",
       "components": [
         "static-component.we-statment",
-        "static-component.hero",
         "sections.team-section",
-        "sections.service-section"
+        "sections.service-section",
+        "common.text-image-buttons",
+        "common.cta",
+        "sections.faq-section",
+        "static-component.hero"
       ],
       "required": true
     }

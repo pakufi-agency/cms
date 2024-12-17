@@ -443,11 +443,60 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     sections: Schema.Attribute.DynamicZone<
       [
         'static-component.we-statment',
-        'static-component.hero',
         'sections.team-section',
         'sections.service-section',
+        'common.text-image-buttons',
+        'common.cta',
+        'sections.faq-section',
+        'static-component.hero',
       ]
     > &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiQuestionAnswerQuestionAnswer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'question_answers';
+  info: {
+    displayName: 'questionAnswer';
+    pluralName: 'question-answers';
+    singularName: 'question-answer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    answer: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::question-answer.question-answer'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    question: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -463,6 +512,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
 export interface ApiServiceService extends Struct.CollectionTypeSchema {
   collectionName: 'services';
   info: {
+    description: '';
     displayName: 'service';
     pluralName: 'services';
     singularName: 'service';
@@ -486,8 +536,17 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    icon: Schema.Attribute.String &
-      Schema.Attribute.Required &
+    icon: Schema.Attribute.Enumeration<
+      [
+        'mind-chip',
+        'robot',
+        'chip',
+        'drone',
+        'mobile-gear',
+        'security-gear',
+        'chart-lens-gear',
+      ]
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -515,6 +574,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
 export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
   collectionName: 'team_members';
   info: {
+    description: '';
     displayName: 'Team member';
     pluralName: 'team-members';
     singularName: 'team-member';
@@ -577,6 +637,12 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::team-member.team-member'
     >;
+    longDescription: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     personalWebsiteAbsoluteUrl: Schema.Attribute.String &
       Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
@@ -592,6 +658,12 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1109,6 +1181,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::footer.footer': ApiFooterFooter;
       'api::page.page': ApiPagePage;
+      'api::question-answer.question-answer': ApiQuestionAnswerQuestionAnswer;
       'api::service.service': ApiServiceService;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'plugin::content-releases.release': PluginContentReleasesRelease;

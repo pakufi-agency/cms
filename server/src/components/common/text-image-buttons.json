@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_common_text_image_buttons",
+  "info": {
+    "displayName": "textImageButtons"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "buttonOneLabel": {
+      "type": "string"
+    },
+    "buttonOneLink": {
+      "type": "string",
+      "required": false
+    },
+    "buttonTwoLabel": {
+      "type": "string"
+    },
+    "buttonTwoLink": {
+      "type": "string"
+    }
+  }
+}

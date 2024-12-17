@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_common_ctas",
+  "info": {
+    "displayName": "cta",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "buttonCtaOneLabel": {
+      "type": "string",
+      "required": true
+    },
+    "buttonCtaOneLink": {
+      "type": "string",
+      "required": true
+    },
+    "buttonCtaTwoLabel": {
+      "type": "string"
+    },
+    "buttonCtaTwoLink": {
+      "type": "string"
+    },
+    "isBig": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

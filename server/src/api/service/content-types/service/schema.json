@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service",
     "pluralName": "services",
-    "displayName": "service"
+    "displayName": "service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -39,8 +40,16 @@
           "localized": true
         }
       },
-      "type": "string",
-      "required": true
+      "type": "enumeration",
+      "enum": [
+        "mind-chip",
+        "robot",
+        "chip",
+        "drone",
+        "mobile-gear",
+        "security-gear",
+        "chart-lens-gear"
+      ]
     }
   }
 }

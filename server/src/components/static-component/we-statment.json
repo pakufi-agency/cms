@@ -17,6 +17,16 @@
     "statmentThree": {
       "type": "string",
       "required": true
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
     }
   }
 }
