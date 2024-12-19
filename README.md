@@ -8,7 +8,6 @@ It use Strapi CMS
 Before starting you will need:
 
 - local postgres (find out how to install and set up postgresdb in your local machine and create one user and one database for this project)
-
 - Nodejs (global)
 - npm (global)
 - Env variables in .env.development
