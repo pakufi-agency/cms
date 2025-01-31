@@ -22,15 +22,19 @@
       "type": "text",
       "required": true
     },
-    "imageHero": {
+    "mediaHero": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
-        "videos"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+        "videos",
+        "audios"
+      ]
+    },
+    "tagline": {
+      "type": "string"
     }
   }
 }

@@ -89,8 +89,11 @@ export interface StaticComponentHero extends Struct.ComponentSchema {
     ctaLabel: Schema.Attribute.String & Schema.Attribute.Required;
     ctaLink: Schema.Attribute.String & Schema.Attribute.Required;
     descriptionHero: Schema.Attribute.Text & Schema.Attribute.Required;
-    imageHero: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
+    mediaHero: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
       Schema.Attribute.Required;
+    tagline: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
