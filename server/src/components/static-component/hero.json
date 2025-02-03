@@ -18,10 +18,6 @@
       "type": "string",
       "required": true
     },
-    "descriptionHero": {
-      "type": "text",
-      "required": true
-    },
     "mediaHero": {
       "type": "media",
       "multiple": false,
@@ -35,6 +31,9 @@
     },
     "tagline": {
       "type": "string"
+    },
+    "descriptionHero": {
+      "type": "blocks"
     }
   }
 }
