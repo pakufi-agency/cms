@@ -32,7 +32,7 @@
     "tagline": {
       "type": "string"
     },
-    "descriptionHero": {
+    "descriptionRichText": {
       "type": "blocks"
     }
   }
