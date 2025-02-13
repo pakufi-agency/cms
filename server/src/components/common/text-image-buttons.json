@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_text_image_buttons",
   "info": {
-    "displayName": "textImageButtons"
+    "displayName": "textImageButtons",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,18 +10,16 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "text"
-    },
     "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "buttonOneLabel": {
       "type": "string"
@@ -34,6 +33,10 @@
     },
     "buttonTwoLink": {
       "type": "string"
+    },
+    "richText": {
+      "type": "blocks",
+      "required": true
     }
   }
 }

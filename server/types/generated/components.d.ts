@@ -21,6 +21,7 @@ export interface CommonCta extends Struct.ComponentSchema {
 export interface CommonTextImageButtons extends Struct.ComponentSchema {
   collectionName: 'components_common_text_image_buttons';
   info: {
+    description: '';
     displayName: 'textImageButtons';
   };
   attributes: {
@@ -28,8 +29,8 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
     buttonOneLink: Schema.Attribute.String;
     buttonTwoLabel: Schema.Attribute.String;
     buttonTwoLink: Schema.Attribute.String;
-    content: Schema.Attribute.Text;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    richText: Schema.Attribute.Blocks & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -106,6 +107,7 @@ export interface StaticComponentWeStatment extends Struct.ComponentSchema {
   };
   attributes: {
     backgroundImage: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     statmentOne: Schema.Attribute.String & Schema.Attribute.Required;
     statmentThree: Schema.Attribute.String & Schema.Attribute.Required;
     statmentTwo: Schema.Attribute.String & Schema.Attribute.Required;
