@@ -1,0 +1,59 @@
+# CONTENT BACKUP:
+# This script take content from production and save it in a json file.
+# It does not backups media.
+# It happen once a month, automaticlly with github actions
+
+# RESTORE
+# To restore the content you can use the bash script in /backups/restore-backup-content.sh
+
+# Future imporovement
+# It would be good to find an way to save all our content (media too), in a faster and automated way.
+# Strapi Cloud do not allow to use strapi export. It can be used just on a local instance.
+# We could upgrade the plan and use Strapi Cloud backups
+
+name: Strapi Backup
+
+on:
+  schedule:
+    - cron: "0 2 1 * *" # Runs at 2:00 AM on the 1st day of every month.
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Ensure backup directory exists
+        run: mkdir -p backups/content
+
+      - name: Fetch Strapi content
+        run: |
+          curl --fail -X GET ${{ secrets.STRAPI_PROD_URL }}/api/pages?populate=*  \
+            -H "Authorization: Bearer ${{ secrets.STRAPI_TOKEN }}"  \
+            -o "backups/content/backup_content_$(date +%Y-%m-%d).json"
+
+      - name: Create tar.gz archive
+        run: |
+          tar -czvf backups/content/backup_content_$(date +%Y-%m-%d).tar.gz -C backups content/
+
+      - name: Encrypt the archive
+        run: |
+          openssl enc -aes-256-cbc -salt -in backups/content/backup_content_$(date +%Y-%m-%d).tar.gz \
+            -out backups/content/backup_content_$(date +%Y-%m-%d).tar.gz.enc -pass pass:${{ secrets.ENCRYPTION_PASSWORD }}
+
+      - name: Commit and push backup
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          git add backups/content/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Automated backup $(date +%Y-%m-%d)"
+            git push || echo "Push failed, possibly due to conflicts."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
