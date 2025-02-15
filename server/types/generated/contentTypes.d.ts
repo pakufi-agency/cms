@@ -449,6 +449,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'common.cta',
         'sections.faq-section',
         'static-component.hero',
+        'common.section',
       ]
     > &
       Schema.Attribute.Required &
@@ -538,13 +539,12 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       }>;
     icon: Schema.Attribute.Enumeration<
       [
-        'mind-chip',
-        'robot',
-        'chip',
-        'drone',
-        'mobile-gear',
-        'security-gear',
-        'chart-lens-gear',
+        'brush',
+        'devices',
+        'maintenance',
+        'management',
+        'planning',
+        'socialMedia',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -565,6 +565,13 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

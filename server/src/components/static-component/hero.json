@@ -29,9 +29,6 @@
         "audios"
       ]
     },
-    "tagline": {
-      "type": "string"
-    },
     "descriptionRichText": {
       "type": "blocks"
     }

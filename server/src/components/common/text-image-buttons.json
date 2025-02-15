@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
     "media": {
       "type": "media",
       "multiple": false,
@@ -37,6 +33,14 @@
     "richText": {
       "type": "blocks",
       "required": true
+    },
+    "ImagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
     }
   }
 }

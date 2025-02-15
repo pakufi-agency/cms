@@ -33,13 +33,12 @@
       },
       "type": "enumeration",
       "enum": [
-        "mind-chip",
-        "robot",
-        "chip",
-        "drone",
-        "mobile-gear",
-        "security-gear",
-        "chart-lens-gear"
+        "brush",
+        "devices",
+        "maintenance",
+        "management",
+        "planning",
+        "socialMedia"
       ]
     },
     "descriptionRichText": {
@@ -49,6 +48,15 @@
         }
       },
       "type": "blocks",
+      "required": true
+    },
+    "subtitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
       "required": true
     }
   }

@@ -18,6 +18,30 @@ export interface CommonCta extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonSection extends Struct.ComponentSchema {
+  collectionName: 'components_common_sections';
+  info: {
+    description: '';
+    displayName: 'Section';
+  };
+  attributes: {
+    backgroundColor: Schema.Attribute.String;
+    barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
+      Schema.Attribute.DefaultTo<'green'>;
+    descriptionColor: Schema.Attribute.String;
+    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
+    sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
+    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    TextImageButtonsComponent: Schema.Attribute.Component<
+      'common.text-image-buttons',
+      false
+    >;
+    titleColor: Schema.Attribute.String;
+  };
+}
+
 export interface CommonTextImageButtons extends Struct.ComponentSchema {
   collectionName: 'components_common_text_image_buttons';
   info: {
@@ -29,9 +53,10 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
     buttonOneLink: Schema.Attribute.String;
     buttonTwoLabel: Schema.Attribute.String;
     buttonTwoLink: Schema.Attribute.String;
+    ImagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'left'>;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     richText: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -39,15 +64,13 @@ export interface SectionsFaqSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_sections';
   info: {
     description: '';
-    displayName: 'faqSection';
+    displayName: 'faqList';
   };
   attributes: {
-    description: Schema.Attribute.Text;
     question_answers: Schema.Attribute.Relation<
       'oneToMany',
       'api::question-answer.question-answer'
     >;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -55,11 +78,9 @@ export interface SectionsServiceSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_service_sections';
   info: {
     description: '';
-    displayName: 'serviceSection';
+    displayName: 'serviceList';
   };
   attributes: {
-    sectionSubtitle: Schema.Attribute.String;
-    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
   };
 }
@@ -68,11 +89,9 @@ export interface SectionsTeamSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_team_sections';
   info: {
     description: '';
-    displayName: 'teamSection';
+    displayName: 'teamMemberList';
   };
   attributes: {
-    sectionSubtitle: Schema.Attribute.String;
-    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     team_members: Schema.Attribute.Relation<
       'oneToMany',
       'api::team-member.team-member'
@@ -94,7 +113,6 @@ export interface StaticComponentHero extends Struct.ComponentSchema {
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
-    tagline: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -118,6 +136,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'common.cta': CommonCta;
+      'common.section': CommonSection;
       'common.text-image-buttons': CommonTextImageButtons;
       'sections.faq-section': SectionsFaqSection;
       'sections.service-section': SectionsServiceSection;

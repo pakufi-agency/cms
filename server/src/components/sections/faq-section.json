@@ -1,19 +1,11 @@
 {
   "collectionName": "components_sections_faq_sections",
   "info": {
-    "displayName": "faqSection",
+    "displayName": "faqList",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "description": {
-      "type": "text",
-      "required": false
-    },
     "question_answers": {
       "type": "relation",
       "relation": "oneToMany",

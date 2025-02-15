@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_common_sections",
+  "info": {
+    "displayName": "Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sectionSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "TextImageButtonsComponent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.text-image-buttons"
+    },
+    "teamMemberList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.team-section"
+    },
+    "serviceList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.service-section"
+    },
+    "faqList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.faq-section"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "titleColor": {
+      "type": "string"
+    },
+    "descriptionColor": {
+      "type": "string"
+    },
+    "barBallColor": {
+      "type": "enumeration",
+      "enum": [
+        "green",
+        "blue"
+      ],
+      "default": "green"
+    }
+  }
+}
