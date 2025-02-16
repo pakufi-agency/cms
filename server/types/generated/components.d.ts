@@ -26,7 +26,39 @@ export interface CommonSection extends Struct.ComponentSchema {
   };
   attributes: {
     backgroundColor: Schema.Attribute.String;
+    backgroundVariation: Schema.Attribute.Enumeration<
+      ['none', 'two bars', 'three bars']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'none'>;
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
+      Schema.Attribute.DefaultTo<'green'>;
+    descriptionColor: Schema.Attribute.String;
+    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
+    sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
+    shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'none'>;
+    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    TextImageButtonsComponent: Schema.Attribute.Component<
+      'common.text-image-buttons',
+      false
+    >;
+    titleColor: Schema.Attribute.String;
+  };
+}
+
+export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
+  collectionName: 'components_common_section_half_backgrounds';
+  info: {
+    description: '';
+    displayName: 'SectionHalfBackground';
+  };
+  attributes: {
+    backgroundColor: Schema.Attribute.String;
+    barBallColor2: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     descriptionColor: Schema.Attribute.String;
     faqList: Schema.Attribute.Component<'sections.faq-section', false>;
@@ -42,6 +74,19 @@ export interface CommonSection extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonSeo extends Struct.ComponentSchema {
+  collectionName: 'components_common_seos';
+  info: {
+    displayName: 'Seo';
+  };
+  attributes: {
+    seoDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    seoPreview: Schema.Attribute.Media<'images' | 'files', true> &
+      Schema.Attribute.Required;
+    seoTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CommonTextImageButtons extends Struct.ComponentSchema {
   collectionName: 'components_common_text_image_buttons';
   info: {
@@ -53,10 +98,11 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
     buttonOneLink: Schema.Attribute.String;
     buttonTwoLabel: Schema.Attribute.String;
     buttonTwoLink: Schema.Attribute.String;
-    ImagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
-      Schema.Attribute.DefaultTo<'left'>;
+    ImagePosition: Schema.Attribute.Enumeration<['left', 'right', 'central']> &
+      Schema.Attribute.DefaultTo<'right'>;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     richText: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    textColor: Schema.Attribute.String;
   };
 }
 
@@ -137,6 +183,8 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'common.cta': CommonCta;
       'common.section': CommonSection;
+      'common.sectionhalfbackground': CommonSectionhalfbackground;
+      'common.seo': CommonSeo;
       'common.text-image-buttons': CommonTextImageButtons;
       'sections.faq-section': SectionsFaqSection;
       'sections.service-section': SectionsServiceSection;

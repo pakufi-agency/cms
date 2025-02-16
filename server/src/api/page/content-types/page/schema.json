@@ -50,9 +50,20 @@
         "common.cta",
         "sections.faq-section",
         "static-component.hero",
-        "common.section"
+        "common.section",
+        "common.sectionhalfbackground"
       ],
       "required": true
+    },
+    "SEO": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "common.seo"
     }
   }
 }

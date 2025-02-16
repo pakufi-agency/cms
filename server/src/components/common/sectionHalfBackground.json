@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_common_sections",
+  "collectionName": "components_common_section_half_backgrounds",
   "info": {
-    "displayName": "Section",
+    "displayName": "SectionHalfBackground",
     "description": ""
   },
   "options": {},
@@ -43,33 +43,13 @@
     "descriptionColor": {
       "type": "string"
     },
-    "barBallColor": {
+    "barBallColor2": {
       "type": "enumeration",
       "enum": [
         "green",
         "blue"
       ],
       "default": "green"
-    },
-    "shapesVariation": {
-      "type": "enumeration",
-      "enum": [
-        "none",
-        "one",
-        "two"
-      ],
-      "default": "none",
-      "required": true
-    },
-    "backgroundVariation": {
-      "type": "enumeration",
-      "enum": [
-        "none",
-        "two bars",
-        "three bars"
-      ],
-      "default": "none",
-      "required": true
     }
   }
 }

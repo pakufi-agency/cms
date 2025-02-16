@@ -450,9 +450,16 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.faq-section',
         'static-component.hero',
         'common.section',
+        'common.sectionhalfbackground',
       ]
     > &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    SEO: Schema.Attribute.Component<'common.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

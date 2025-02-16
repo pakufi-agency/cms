@@ -38,9 +38,13 @@
       "type": "enumeration",
       "enum": [
         "left",
-        "right"
+        "right",
+        "central"
       ],
-      "default": "left"
+      "default": "right"
+    },
+    "textColor": {
+      "type": "string"
     }
   }
 }

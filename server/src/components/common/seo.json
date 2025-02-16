@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_common_seos",
+  "info": {
+    "displayName": "Seo"
+  },
+  "options": {},
+  "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "required": true
+    },
+    "seoDescription": {
+      "type": "text",
+      "required": true
+    },
+    "seoPreview": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}
