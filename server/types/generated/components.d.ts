@@ -120,6 +120,23 @@ export interface SectionsFaqSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsIntroSinglePage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_intro_single_pages';
+  info: {
+    description: '';
+    displayName: 'IntroSinglePage';
+  };
+  attributes: {
+    mediaIntroSinglePage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos'
+    > &
+      Schema.Attribute.Required;
+    richTextDescription: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    textCols: Schema.Attribute.Component<'common.text-image-buttons', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsServiceSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_service_sections';
   info: {
@@ -187,6 +204,7 @@ declare module '@strapi/strapi' {
       'common.seo': CommonSeo;
       'common.text-image-buttons': CommonTextImageButtons;
       'sections.faq-section': SectionsFaqSection;
+      'sections.intro-single-page': SectionsIntroSinglePage;
       'sections.service-section': SectionsServiceSection;
       'sections.team-section': SectionsTeamSection;
       'static-component.hero': StaticComponentHero;

@@ -423,6 +423,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    internalBannerMedia: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
     pageDescription: Schema.Attribute.Text &
@@ -451,6 +457,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'static-component.hero',
         'common.section',
         'common.sectionhalfbackground',
+        'sections.intro-single-page',
       ]
     > &
       Schema.Attribute.Required &

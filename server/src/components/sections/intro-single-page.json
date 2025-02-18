@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_sections_intro_single_pages",
+  "info": {
+    "displayName": "IntroSinglePage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "richTextDescription": {
+      "type": "blocks",
+      "required": true
+    },
+    "mediaIntroSinglePage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "textCols": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.text-image-buttons"
+    }
+  }
+}

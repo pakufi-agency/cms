@@ -51,7 +51,8 @@
         "sections.faq-section",
         "static-component.hero",
         "common.section",
-        "common.sectionhalfbackground"
+        "common.sectionhalfbackground",
+        "sections.intro-single-page"
       ],
       "required": true
     },
@@ -64,6 +65,21 @@
         }
       },
       "component": "common.seo"
+    },
+    "internalBannerMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
