@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_common_icon_title_subtitles",
+  "info": {
+    "displayName": "iconTitleSubtitle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "iconImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "blocks"
+    },
+    "iconName": {
+      "type": "string"
+    }
+  }
+}

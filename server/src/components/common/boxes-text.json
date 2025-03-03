@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_common_boxes_texts",
+  "info": {
+    "displayName": "BoxesText"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

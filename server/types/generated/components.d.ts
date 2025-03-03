@@ -1,5 +1,15 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CommonBoxesText extends Struct.ComponentSchema {
+  collectionName: 'components_common_boxes_texts';
+  info: {
+    displayName: 'BoxesText';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
 export interface CommonCta extends Struct.ComponentSchema {
   collectionName: 'components_common_ctas';
   info: {
@@ -18,6 +28,20 @@ export interface CommonCta extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonIconTitleSubtitle extends Struct.ComponentSchema {
+  collectionName: 'components_common_icon_title_subtitles';
+  info: {
+    description: '';
+    displayName: 'iconTitleSubtitle';
+  };
+  attributes: {
+    iconImg: Schema.Attribute.Media<'images' | 'files'>;
+    iconName: Schema.Attribute.String;
+    subtitle: Schema.Attribute.Blocks;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CommonSection extends Struct.ComponentSchema {
   collectionName: 'components_common_sections';
   info: {
@@ -33,8 +57,13 @@ export interface CommonSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'none'>;
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
+    boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
     descriptionColor: Schema.Attribute.String;
     faqList: Schema.Attribute.Component<'sections.faq-section', false>;
+    iconTitleSubtitle: Schema.Attribute.Component<
+      'common.icon-title-subtitle',
+      true
+    >;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
@@ -198,7 +227,9 @@ export interface StaticComponentWeStatment extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'common.boxes-text': CommonBoxesText;
       'common.cta': CommonCta;
+      'common.icon-title-subtitle': CommonIconTitleSubtitle;
       'common.section': CommonSection;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;

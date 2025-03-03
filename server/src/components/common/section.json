@@ -70,6 +70,16 @@
       ],
       "default": "none",
       "required": true
+    },
+    "iconTitleSubtitle": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.icon-title-subtitle"
+    },
+    "boxesText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.boxes-text"
     }
   }
 }
