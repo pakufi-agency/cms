@@ -369,6 +369,41 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCollaboratorCollaborator
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'collaborators';
+  info: {
+    description: '';
+    displayName: 'Collaborator';
+    pluralName: 'collaborators';
+    singularName: 'collaborator';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    jobPosition: Schema.Attribute.String & Schema.Attribute.Required;
+    linkedinAbsoluteUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
+    > &
+      Schema.Attribute.Private;
+    personalWebsiteAbsoluteUrl: Schema.Attribute.String;
+    profilePic: Schema.Attribute.Media<'images' | 'files'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -1200,6 +1235,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::collaborator.collaborator': ApiCollaboratorCollaborator;
       'api::footer.footer': ApiFooterFooter;
       'api::page.page': ApiPagePage;
       'api::question-answer.question-answer': ApiQuestionAnswerQuestionAnswer;

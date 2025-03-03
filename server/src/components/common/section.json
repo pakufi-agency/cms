@@ -80,6 +80,11 @@
       "type": "component",
       "repeatable": true,
       "component": "common.boxes-text"
+    },
+    "collaboratorList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.collaborator-list"
     }
   }
 }

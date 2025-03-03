@@ -58,6 +58,10 @@ export interface CommonSection extends Struct.ComponentSchema {
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
+    collaboratorList: Schema.Attribute.Component<
+      'sections.collaborator-list',
+      false
+    >;
     descriptionColor: Schema.Attribute.String;
     faqList: Schema.Attribute.Component<'sections.faq-section', false>;
     iconTitleSubtitle: Schema.Attribute.Component<
@@ -89,8 +93,17 @@ export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
     backgroundColor: Schema.Attribute.String;
     barBallColor2: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
+    boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
+    collaboratorList: Schema.Attribute.Component<
+      'sections.collaborator-list',
+      false
+    >;
     descriptionColor: Schema.Attribute.String;
     faqList: Schema.Attribute.Component<'sections.faq-section', false>;
+    iconTitleSubtitle: Schema.Attribute.Component<
+      'common.icon-title-subtitle',
+      true
+    >;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
@@ -132,6 +145,19 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     richText: Schema.Attribute.Blocks & Schema.Attribute.Required;
     textColor: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsCollaboratorList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_collaborator_lists';
+  info: {
+    displayName: 'collaboratorList';
+  };
+  attributes: {
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
+    >;
   };
 }
 
@@ -234,6 +260,7 @@ declare module '@strapi/strapi' {
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;
       'common.text-image-buttons': CommonTextImageButtons;
+      'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
       'sections.intro-single-page': SectionsIntroSinglePage;
       'sections.service-section': SectionsServiceSection;

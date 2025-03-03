@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_collaborator_lists",
+  "info": {
+    "displayName": "collaboratorList"
+  },
+  "options": {},
+  "attributes": {
+    "collaborators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::collaborator.collaborator"
+    }
+  }
+}

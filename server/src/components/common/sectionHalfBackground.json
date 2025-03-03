@@ -50,6 +50,21 @@
         "blue"
       ],
       "default": "green"
+    },
+    "collaboratorList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.collaborator-list"
+    },
+    "boxesText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.boxes-text"
+    },
+    "iconTitleSubtitle": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.icon-title-subtitle"
     }
   }
 }
