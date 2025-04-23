@@ -493,6 +493,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'common.section',
         'common.sectionhalfbackground',
         'sections.intro-single-page',
+        'common.newsletter',
       ]
     > &
       Schema.Attribute.Required &

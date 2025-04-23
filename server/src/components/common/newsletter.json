@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_common_newsletters",
+  "info": {
+    "displayName": "Newsletter"
+  },
+  "options": {},
+  "attributes": {
+    "buttonLabel": {
+      "type": "string"
+    }
+  }
+}

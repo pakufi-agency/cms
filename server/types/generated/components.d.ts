@@ -42,6 +42,16 @@ export interface CommonIconTitleSubtitle extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonNewsletter extends Struct.ComponentSchema {
+  collectionName: 'components_common_newsletters';
+  info: {
+    displayName: 'Newsletter';
+  };
+  attributes: {
+    buttonLabel: Schema.Attribute.String;
+  };
+}
+
 export interface CommonSection extends Struct.ComponentSchema {
   collectionName: 'components_common_sections';
   info: {
@@ -68,6 +78,7 @@ export interface CommonSection extends Struct.ComponentSchema {
       'common.icon-title-subtitle',
       true
     >;
+    Newsletter: Schema.Attribute.Component<'common.newsletter', false>;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
@@ -256,6 +267,7 @@ declare module '@strapi/strapi' {
       'common.boxes-text': CommonBoxesText;
       'common.cta': CommonCta;
       'common.icon-title-subtitle': CommonIconTitleSubtitle;
+      'common.newsletter': CommonNewsletter;
       'common.section': CommonSection;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;

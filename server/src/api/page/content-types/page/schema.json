@@ -52,7 +52,8 @@
         "static-component.hero",
         "common.section",
         "common.sectionhalfbackground",
-        "sections.intro-single-page"
+        "sections.intro-single-page",
+        "common.newsletter"
       ],
       "required": true
     },

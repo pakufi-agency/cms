@@ -85,6 +85,11 @@
       "type": "component",
       "repeatable": false,
       "component": "sections.collaborator-list"
+    },
+    "Newsletter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.newsletter"
     }
   }
 }
