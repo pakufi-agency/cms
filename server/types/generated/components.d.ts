@@ -45,10 +45,20 @@ export interface CommonIconTitleSubtitle extends Struct.ComponentSchema {
 export interface CommonNewsletter extends Struct.ComponentSchema {
   collectionName: 'components_common_newsletters';
   info: {
+    description: '';
     displayName: 'Newsletter';
   };
   attributes: {
-    buttonLabel: Schema.Attribute.String;
+    buttonLabel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Sign up'>;
+    footnote: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'No spam. Just heartfelt stories, upcoming events, and offers you might           actually care about.'>;
+    subtitle: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Subscribe to our newsletter and be part of the journey'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<' Stay Connected with Pakufi'>;
   };
 }
 

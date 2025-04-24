@@ -1,12 +1,28 @@
 {
   "collectionName": "components_common_newsletters",
   "info": {
-    "displayName": "Newsletter"
+    "displayName": "Newsletter",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "buttonLabel": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "default": "Sign up"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": " Stay Connected with Pakufi"
+    },
+    "subtitle": {
+      "type": "text",
+      "default": "Subscribe to our newsletter and be part of the journey"
+    },
+    "footnote": {
+      "type": "text",
+      "default": "No spam. Just heartfelt stories, upcoming events, and offers you might           actually care about."
     }
   }
 }
