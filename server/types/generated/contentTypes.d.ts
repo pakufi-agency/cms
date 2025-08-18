@@ -483,7 +483,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'static-component.we-statment',
         'sections.team-section',
         'sections.service-section',
         'common.text-image-buttons',
@@ -494,6 +493,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'common.sectionhalfbackground',
         'sections.intro-single-page',
         'common.newsletter',
+        'static-component.what-we-do',
       ]
     > &
       Schema.Attribute.Required &

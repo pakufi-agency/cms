@@ -43,7 +43,6 @@
       },
       "type": "dynamiczone",
       "components": [
-        "static-component.we-statment",
         "sections.team-section",
         "sections.service-section",
         "common.text-image-buttons",
@@ -53,7 +52,8 @@
         "common.section",
         "common.sectionhalfbackground",
         "sections.intro-single-page",
-        "common.newsletter"
+        "common.newsletter",
+        "static-component.what-we-do"
       ],
       "required": true
     },

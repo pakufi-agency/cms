@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_static_component_what_we_dos",
+  "info": {
+    "displayName": "WhatWeDo"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "pakufiOffers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.card"
+    }
+  }
+}

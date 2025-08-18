@@ -10,9 +10,9 @@
       "type": "string",
       "required": true
     },
-    "sectionSubtitle": {
+    "subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "TextImageButtonsComponent": {
       "type": "component",

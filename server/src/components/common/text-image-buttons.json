@@ -45,6 +45,13 @@
     },
     "textColor": {
       "type": "string"
+    },
+    "buttonStyle": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "btn-shining"
+      ]
     }
   }
 }

@@ -10,6 +10,34 @@ export interface CommonBoxesText extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonButton extends Struct.ComponentSchema {
+  collectionName: 'components_common_buttons';
+  info: {
+    description: '';
+    displayName: 'Button';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    style: Schema.Attribute.Enumeration<['none', 'btn-shining']>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CommonCard extends Struct.ComponentSchema {
+  collectionName: 'components_common_cards';
+  info: {
+    displayName: 'Card';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'common.button', true>;
+    cardStyle: Schema.Attribute.String;
+    content: Schema.Attribute.Blocks;
+    iconAsImg: Schema.Attribute.Media<'images' | 'files'>;
+    iconAsText: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CommonCta extends Struct.ComponentSchema {
   collectionName: 'components_common_ctas';
   info: {
@@ -89,12 +117,12 @@ export interface CommonSection extends Struct.ComponentSchema {
       true
     >;
     Newsletter: Schema.Attribute.Component<'common.newsletter', false>;
-    sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
     shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'none'>;
+    subtitle: Schema.Attribute.String;
     teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
@@ -159,6 +187,7 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
   attributes: {
     buttonOneLabel: Schema.Attribute.String;
     buttonOneLink: Schema.Attribute.String;
+    buttonStyle: Schema.Attribute.Enumeration<['none', 'btn-shining']>;
     buttonTwoLabel: Schema.Attribute.String;
     buttonTwoLink: Schema.Attribute.String;
     ImagePosition: Schema.Attribute.Enumeration<['left', 'right', 'central']> &
@@ -245,8 +274,7 @@ export interface StaticComponentHero extends Struct.ComponentSchema {
     displayName: 'Hero';
   };
   attributes: {
-    ctaLabel: Schema.Attribute.String & Schema.Attribute.Required;
-    ctaLink: Schema.Attribute.String & Schema.Attribute.Required;
+    Button: Schema.Attribute.Component<'common.button', true>;
     descriptionRichText: Schema.Attribute.Blocks;
     mediaHero: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -271,10 +299,23 @@ export interface StaticComponentWeStatment extends Struct.ComponentSchema {
   };
 }
 
+export interface StaticComponentWhatWeDo extends Struct.ComponentSchema {
+  collectionName: 'components_static_component_what_we_dos';
+  info: {
+    displayName: 'WhatWeDo';
+  };
+  attributes: {
+    pakufiOffers: Schema.Attribute.Component<'common.card', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'common.boxes-text': CommonBoxesText;
+      'common.button': CommonButton;
+      'common.card': CommonCard;
       'common.cta': CommonCta;
       'common.icon-title-subtitle': CommonIconTitleSubtitle;
       'common.newsletter': CommonNewsletter;
@@ -289,6 +330,7 @@ declare module '@strapi/strapi' {
       'sections.team-section': SectionsTeamSection;
       'static-component.hero': StaticComponentHero;
       'static-component.we-statment': StaticComponentWeStatment;
+      'static-component.what-we-do': StaticComponentWhatWeDo;
     }
   }
 }
