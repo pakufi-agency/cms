@@ -70,6 +70,18 @@ export interface CommonIconTitleSubtitle extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonLinearStep extends Struct.ComponentSchema {
+  collectionName: 'components_common_linear_steps';
+  info: {
+    displayName: 'linearStep';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    stepNumber: Schema.Attribute.Integer;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CommonNewsletter extends Struct.ComponentSchema {
   collectionName: 'components_common_newsletters';
   info: {
@@ -117,6 +129,10 @@ export interface CommonSection extends Struct.ComponentSchema {
       true
     >;
     Newsletter: Schema.Attribute.Component<'common.newsletter', false>;
+    pricePackageList: Schema.Attribute.Component<
+      'sections.price-package-list',
+      false
+    >;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
     shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
@@ -124,8 +140,13 @@ export interface CommonSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'none'>;
     subtitle: Schema.Attribute.String;
     teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    TextBlock: Schema.Attribute.Component<'common.boxes-text', false>;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
+      false
+    >;
+    timelineSection: Schema.Attribute.Component<
+      'sections.project-steps',
       false
     >;
     titleColor: Schema.Attribute.String;
@@ -153,12 +174,20 @@ export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
       'common.icon-title-subtitle',
       true
     >;
+    pricePackageList: Schema.Attribute.Component<
+      'sections.price-package-list',
+      false
+    >;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     serviceList: Schema.Attribute.Component<'sections.service-section', false>;
     teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
+      false
+    >;
+    timelineSection: Schema.Attribute.Component<
+      'sections.project-steps',
       false
     >;
     titleColor: Schema.Attribute.String;
@@ -242,6 +271,32 @@ export interface SectionsIntroSinglePage extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsPricePackageList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_price_package_lists';
+  info: {
+    displayName: 'pricePackageList';
+  };
+  attributes: {
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    >;
+  };
+}
+
+export interface SectionsProjectSteps extends Struct.ComponentSchema {
+  collectionName: 'components_sections_project_steps';
+  info: {
+    description: '';
+    displayName: 'ProjectSteps';
+  };
+  attributes: {
+    sideText: Schema.Attribute.Blocks;
+    timelineAlign: Schema.Attribute.Enumeration<['center', 'left', 'right']>;
+    timelineStep: Schema.Attribute.Component<'common.linear-step', true>;
+  };
+}
+
 export interface SectionsServiceSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_service_sections';
   info: {
@@ -318,6 +373,7 @@ declare module '@strapi/strapi' {
       'common.card': CommonCard;
       'common.cta': CommonCta;
       'common.icon-title-subtitle': CommonIconTitleSubtitle;
+      'common.linear-step': CommonLinearStep;
       'common.newsletter': CommonNewsletter;
       'common.section': CommonSection;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
@@ -326,6 +382,8 @@ declare module '@strapi/strapi' {
       'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
       'sections.intro-single-page': SectionsIntroSinglePage;
+      'sections.price-package-list': SectionsPricePackageList;
+      'sections.project-steps': SectionsProjectSteps;
       'sections.service-section': SectionsServiceSection;
       'sections.team-section': SectionsTeamSection;
       'static-component.hero': StaticComponentHero;

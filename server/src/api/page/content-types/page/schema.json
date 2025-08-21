@@ -53,7 +53,8 @@
         "common.sectionhalfbackground",
         "sections.intro-single-page",
         "common.newsletter",
-        "static-component.what-we-do"
+        "static-component.what-we-do",
+        "common.boxes-text"
       ],
       "required": true
     },

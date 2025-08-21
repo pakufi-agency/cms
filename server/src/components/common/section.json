@@ -90,6 +90,21 @@
       "type": "component",
       "repeatable": false,
       "component": "common.newsletter"
+    },
+    "timelineSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.project-steps"
+    },
+    "pricePackageList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.price-package-list"
+    },
+    "TextBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.boxes-text"
     }
   }
 }

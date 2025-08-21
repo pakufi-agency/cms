@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_price_package_lists",
+  "info": {
+    "displayName": "pricePackageList"
+  },
+  "options": {},
+  "attributes": {
+    "price_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price-package.price-package"
+    }
+  }
+}

@@ -65,6 +65,16 @@
       "type": "component",
       "repeatable": true,
       "component": "common.icon-title-subtitle"
+    },
+    "pricePackageList": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.price-package-list"
+    },
+    "timelineSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.project-steps"
     }
   }
 }

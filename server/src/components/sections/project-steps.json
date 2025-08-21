@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_project_steps",
+  "info": {
+    "displayName": "ProjectSteps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "timelineStep": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.linear-step"
+    },
+    "sideText": {
+      "type": "blocks"
+    },
+    "timelineAlign": {
+      "type": "enumeration",
+      "enum": [
+        "center",
+        "left",
+        "right"
+      ]
+    }
+  }
+}

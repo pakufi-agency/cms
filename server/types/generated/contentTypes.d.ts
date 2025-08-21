@@ -494,6 +494,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.intro-single-page',
         'common.newsletter',
         'static-component.what-we-do',
+        'common.boxes-text',
       ]
     > &
       Schema.Attribute.Required &
@@ -508,6 +509,40 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPricePackagePricePackage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'price_packages';
+  info: {
+    displayName: 'PricePackage';
+    pluralName: 'price-packages';
+    singularName: 'price-package';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'common.button', false> &
+      Schema.Attribute.Required;
+    features: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    > &
+      Schema.Attribute.Private;
+    price: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1239,6 +1274,7 @@ declare module '@strapi/strapi' {
       'api::collaborator.collaborator': ApiCollaboratorCollaborator;
       'api::footer.footer': ApiFooterFooter;
       'api::page.page': ApiPagePage;
+      'api::price-package.price-package': ApiPricePackagePricePackage;
       'api::question-answer.question-answer': ApiQuestionAnswerQuestionAnswer;
       'api::service.service': ApiServiceService;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
