@@ -118,28 +118,39 @@ export interface CommonSection extends Struct.ComponentSchema {
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
-    collaboratorList: Schema.Attribute.Component<
-      'sections.collaborator-list',
-      false
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
     >;
     descriptionColor: Schema.Attribute.String;
-    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
     iconTitleSubtitle: Schema.Attribute.Component<
       'common.icon-title-subtitle',
       true
     >;
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
     Newsletter: Schema.Attribute.Component<'common.newsletter', false>;
-    pricePackageList: Schema.Attribute.Component<
-      'sections.price-package-list',
-      false
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    >;
+    question_answers: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::question-answer.question-answer'
     >;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'none'>;
     subtitle: Schema.Attribute.String;
-    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
     TextBlock: Schema.Attribute.Component<'common.boxes-text', false>;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
@@ -164,24 +175,31 @@ export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
     barBallColor2: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
-    collaboratorList: Schema.Attribute.Component<
-      'sections.collaborator-list',
-      false
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
     >;
     descriptionColor: Schema.Attribute.String;
-    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
     iconTitleSubtitle: Schema.Attribute.Component<
       'common.icon-title-subtitle',
       true
     >;
-    pricePackageList: Schema.Attribute.Component<
-      'sections.price-package-list',
-      false
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
     >;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
-    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
       false
@@ -271,6 +289,29 @@ export interface SectionsIntroSinglePage extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsMentorList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_mentor_lists';
+  info: {
+    displayName: 'MentorList';
+  };
+  attributes: {
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+  };
+}
+
+export interface SectionsMentorshipPackageList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_mentorship_package_lists';
+  info: {
+    displayName: 'MentorshipPackageList';
+  };
+  attributes: {
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
+  };
+}
+
 export interface SectionsPricePackageList extends Struct.ComponentSchema {
   collectionName: 'components_sections_price_package_lists';
   info: {
@@ -288,7 +329,7 @@ export interface SectionsProjectSteps extends Struct.ComponentSchema {
   collectionName: 'components_sections_project_steps';
   info: {
     description: '';
-    displayName: 'ProjectSteps';
+    displayName: 'TImelineAndText';
   };
   attributes: {
     sideText: Schema.Attribute.Blocks;
@@ -382,6 +423,8 @@ declare module '@strapi/strapi' {
       'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
       'sections.intro-single-page': SectionsIntroSinglePage;
+      'sections.mentor-list': SectionsMentorList;
+      'sections.mentorship-package-list': SectionsMentorshipPackageList;
       'sections.price-package-list': SectionsPricePackageList;
       'sections.project-steps': SectionsProjectSteps;
       'sections.service-section': SectionsServiceSection;

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mentorship_programs",
+  "info": {
+    "singularName": "mentorship-program",
+    "pluralName": "mentorship-programs",
+    "displayName": "MentorshipProgram",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "features": {
+      "type": "blocks"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button"
+    }
+  }
+}

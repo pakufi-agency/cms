@@ -438,6 +438,74 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMentorMentor extends Struct.CollectionTypeSchema {
+  collectionName: 'mentors';
+  info: {
+    displayName: 'Mentor';
+    pluralName: 'mentors';
+    singularName: 'mentor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    fullName: Schema.Attribute.String;
+    jobPosition: Schema.Attribute.String;
+    linkedinAbsoluteUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentor.mentor'
+    > &
+      Schema.Attribute.Private;
+    otherAbsoluteUrl: Schema.Attribute.String;
+    profilePic: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMentorshipProgramMentorshipProgram
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mentorship_programs';
+  info: {
+    description: '';
+    displayName: 'MentorshipProgram';
+    pluralName: 'mentorship-programs';
+    singularName: 'mentorship-program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'common.button', false>;
+    features: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -1273,6 +1341,8 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::collaborator.collaborator': ApiCollaboratorCollaborator;
       'api::footer.footer': ApiFooterFooter;
+      'api::mentor.mentor': ApiMentorMentor;
+      'api::mentorship-program.mentorship-program': ApiMentorshipProgramMentorshipProgram;
       'api::page.page': ApiPagePage;
       'api::price-package.price-package': ApiPricePackagePricePackage;
       'api::question-answer.question-answer': ApiQuestionAnswerQuestionAnswer;

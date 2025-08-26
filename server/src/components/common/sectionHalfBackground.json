@@ -19,21 +19,6 @@
       "repeatable": false,
       "component": "common.text-image-buttons"
     },
-    "teamMemberList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.team-section"
-    },
-    "serviceList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.service-section"
-    },
-    "faqList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.faq-section"
-    },
     "backgroundColor": {
       "type": "string"
     },
@@ -51,11 +36,6 @@
       ],
       "default": "green"
     },
-    "collaboratorList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.collaborator-list"
-    },
     "boxesText": {
       "type": "component",
       "repeatable": true,
@@ -66,15 +46,40 @@
       "repeatable": true,
       "component": "common.icon-title-subtitle"
     },
-    "pricePackageList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.price-package-list"
-    },
     "timelineSection": {
       "type": "component",
       "repeatable": false,
       "component": "sections.project-steps"
+    },
+    "collaborators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::collaborator.collaborator"
+    },
+    "mentors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentor.mentor"
+    },
+    "mentorship_programs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentorship-program.mentorship-program"
+    },
+    "price_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price-package.price-package"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
     }
   }
 }
