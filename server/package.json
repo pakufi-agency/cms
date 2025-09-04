@@ -7,6 +7,7 @@
     "build": "strapi build",
     "deploy": "strapi deploy",
     "develop": "NODE_ENV=development strapi develop",
+    "develop-network": "HOST=0.0.0.0 strapi develop",
     "start": "NODE_ENV=production strapi start",
     "strapi": "strapi"
   },
