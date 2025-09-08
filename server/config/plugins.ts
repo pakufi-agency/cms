@@ -18,7 +18,7 @@ export default ({ env }) => ({
   },
   'sanitize': {
     config: {
-      allowedTags: ['br', 'a', 'button', 'strong', 'em', 'u', 'span'],
+      allowedTags: ['br', 'a', 'button', 'strong', 'em', 'u', 'span', 'data-url', 'src', 'href'],
     },
   },
   });
