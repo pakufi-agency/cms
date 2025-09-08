@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_common_cards",
+  "info": {
+    "displayName": "Card"
+  },
+  "options": {},
+  "attributes": {
+    "cardStyle": {
+      "type": "string",
+      "unique": false,
+      "required": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
+    },
+    "iconAsText": {
+      "type": "string"
+    },
+    "iconAsImg": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

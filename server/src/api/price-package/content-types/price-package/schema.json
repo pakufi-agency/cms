@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "price_packages",
+  "info": {
+    "singularName": "price-package",
+    "pluralName": "price-packages",
+    "displayName": "PricePackage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "features": {
+      "type": "blocks"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button",
+      "required": true
+    }
+  }
+}

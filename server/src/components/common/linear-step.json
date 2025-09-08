@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_linear_steps",
+  "info": {
+    "displayName": "linearStep"
+  },
+  "options": {},
+  "attributes": {
+    "stepNumber": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

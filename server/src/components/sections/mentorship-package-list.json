@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_mentorship_package_lists",
+  "info": {
+    "displayName": "MentorshipPackageList"
+  },
+  "options": {},
+  "attributes": {
+    "mentorship_programs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentorship-program.mentorship-program"
+    }
+  }
+}

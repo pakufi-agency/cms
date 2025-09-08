@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mentors",
+  "info": {
+    "singularName": "mentor",
+    "pluralName": "mentors",
+    "displayName": "Mentor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "jobPosition": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "profilePic": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "linkedinAbsoluteUrl": {
+      "type": "string"
+    },
+    "otherAbsoluteUrl": {
+      "type": "string"
+    }
+  }
+}

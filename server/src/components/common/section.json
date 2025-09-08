@@ -10,29 +10,14 @@
       "type": "string",
       "required": true
     },
-    "sectionSubtitle": {
+    "subtitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "TextImageButtonsComponent": {
       "type": "component",
       "repeatable": false,
       "component": "common.text-image-buttons"
-    },
-    "teamMemberList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.team-section"
-    },
-    "serviceList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.service-section"
-    },
-    "faqList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.faq-section"
     },
     "backgroundColor": {
       "type": "string"
@@ -81,15 +66,55 @@
       "repeatable": true,
       "component": "common.boxes-text"
     },
-    "collaboratorList": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.collaborator-list"
-    },
     "Newsletter": {
       "type": "component",
       "repeatable": false,
       "component": "common.newsletter"
+    },
+    "timelineSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.project-steps"
+    },
+    "TextBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.boxes-text"
+    },
+    "mentorship_programs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentorship-program.mentorship-program"
+    },
+    "mentors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentor.mentor"
+    },
+    "collaborators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::collaborator.collaborator"
+    },
+    "price_packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price-package.price-package"
+    },
+    "question_answers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question-answer.question-answer"
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
     }
   }
 }

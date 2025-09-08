@@ -10,14 +10,6 @@
       "type": "string",
       "required": true
     },
-    "ctaLabel": {
-      "type": "string",
-      "required": true
-    },
-    "ctaLink": {
-      "type": "string",
-      "required": true
-    },
     "mediaHero": {
       "type": "media",
       "multiple": false,
@@ -31,6 +23,12 @@
     },
     "descriptionRichText": {
       "type": "blocks"
+    },
+    "Button": {
+      "displayName": "Button",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
     }
   }
 }

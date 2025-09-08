@@ -10,6 +10,34 @@ export interface CommonBoxesText extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonButton extends Struct.ComponentSchema {
+  collectionName: 'components_common_buttons';
+  info: {
+    description: '';
+    displayName: 'Button';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    style: Schema.Attribute.Enumeration<['none', 'btn-shining']>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CommonCard extends Struct.ComponentSchema {
+  collectionName: 'components_common_cards';
+  info: {
+    displayName: 'Card';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'common.button', true>;
+    cardStyle: Schema.Attribute.String;
+    content: Schema.Attribute.Blocks;
+    iconAsImg: Schema.Attribute.Media<'images' | 'files'>;
+    iconAsText: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CommonCta extends Struct.ComponentSchema {
   collectionName: 'components_common_ctas';
   info: {
@@ -39,6 +67,18 @@ export interface CommonIconTitleSubtitle extends Struct.ComponentSchema {
     iconName: Schema.Attribute.String;
     subtitle: Schema.Attribute.Blocks;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CommonLinearStep extends Struct.ComponentSchema {
+  collectionName: 'components_common_linear_steps';
+  info: {
+    displayName: 'linearStep';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    stepNumber: Schema.Attribute.Integer;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -78,26 +118,46 @@ export interface CommonSection extends Struct.ComponentSchema {
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
-    collaboratorList: Schema.Attribute.Component<
-      'sections.collaborator-list',
-      false
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
     >;
     descriptionColor: Schema.Attribute.String;
-    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
     iconTitleSubtitle: Schema.Attribute.Component<
       'common.icon-title-subtitle',
       true
     >;
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
     Newsletter: Schema.Attribute.Component<'common.newsletter', false>;
-    sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    >;
+    question_answers: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::question-answer.question-answer'
+    >;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'none'>;
-    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    subtitle: Schema.Attribute.String;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    TextBlock: Schema.Attribute.Component<'common.boxes-text', false>;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
+      false
+    >;
+    timelineSection: Schema.Attribute.Component<
+      'sections.project-steps',
       false
     >;
     titleColor: Schema.Attribute.String;
@@ -115,22 +175,37 @@ export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
     barBallColor2: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
-    collaboratorList: Schema.Attribute.Component<
-      'sections.collaborator-list',
-      false
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
     >;
     descriptionColor: Schema.Attribute.String;
-    faqList: Schema.Attribute.Component<'sections.faq-section', false>;
     iconTitleSubtitle: Schema.Attribute.Component<
       'common.icon-title-subtitle',
       true
     >;
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    >;
     sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    serviceList: Schema.Attribute.Component<'sections.service-section', false>;
-    teamMemberList: Schema.Attribute.Component<'sections.team-section', false>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
     TextImageButtonsComponent: Schema.Attribute.Component<
       'common.text-image-buttons',
+      false
+    >;
+    timelineSection: Schema.Attribute.Component<
+      'sections.project-steps',
       false
     >;
     titleColor: Schema.Attribute.String;
@@ -159,6 +234,7 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
   attributes: {
     buttonOneLabel: Schema.Attribute.String;
     buttonOneLink: Schema.Attribute.String;
+    buttonStyle: Schema.Attribute.Enumeration<['none', 'btn-shining']>;
     buttonTwoLabel: Schema.Attribute.String;
     buttonTwoLink: Schema.Attribute.String;
     ImagePosition: Schema.Attribute.Enumeration<['left', 'right', 'central']> &
@@ -213,6 +289,55 @@ export interface SectionsIntroSinglePage extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsMentorList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_mentor_lists';
+  info: {
+    displayName: 'MentorList';
+  };
+  attributes: {
+    mentors: Schema.Attribute.Relation<'oneToMany', 'api::mentor.mentor'>;
+  };
+}
+
+export interface SectionsMentorshipPackageList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_mentorship_package_lists';
+  info: {
+    displayName: 'MentorshipPackageList';
+  };
+  attributes: {
+    mentorship_programs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentorship-program.mentorship-program'
+    >;
+  };
+}
+
+export interface SectionsPricePackageList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_price_package_lists';
+  info: {
+    displayName: 'pricePackageList';
+  };
+  attributes: {
+    price_packages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-package.price-package'
+    >;
+  };
+}
+
+export interface SectionsProjectSteps extends Struct.ComponentSchema {
+  collectionName: 'components_sections_project_steps';
+  info: {
+    description: '';
+    displayName: 'TImelineAndText';
+  };
+  attributes: {
+    sideText: Schema.Attribute.Blocks;
+    timelineAlign: Schema.Attribute.Enumeration<['center', 'left', 'right']>;
+    timelineStep: Schema.Attribute.Component<'common.linear-step', true>;
+  };
+}
+
 export interface SectionsServiceSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_service_sections';
   info: {
@@ -245,8 +370,7 @@ export interface StaticComponentHero extends Struct.ComponentSchema {
     displayName: 'Hero';
   };
   attributes: {
-    ctaLabel: Schema.Attribute.String & Schema.Attribute.Required;
-    ctaLink: Schema.Attribute.String & Schema.Attribute.Required;
+    Button: Schema.Attribute.Component<'common.button', true>;
     descriptionRichText: Schema.Attribute.Blocks;
     mediaHero: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -271,12 +395,26 @@ export interface StaticComponentWeStatment extends Struct.ComponentSchema {
   };
 }
 
+export interface StaticComponentWhatWeDo extends Struct.ComponentSchema {
+  collectionName: 'components_static_component_what_we_dos';
+  info: {
+    displayName: 'WhatWeDo';
+  };
+  attributes: {
+    pakufiOffers: Schema.Attribute.Component<'common.card', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'common.boxes-text': CommonBoxesText;
+      'common.button': CommonButton;
+      'common.card': CommonCard;
       'common.cta': CommonCta;
       'common.icon-title-subtitle': CommonIconTitleSubtitle;
+      'common.linear-step': CommonLinearStep;
       'common.newsletter': CommonNewsletter;
       'common.section': CommonSection;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
@@ -285,10 +423,15 @@ declare module '@strapi/strapi' {
       'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
       'sections.intro-single-page': SectionsIntroSinglePage;
+      'sections.mentor-list': SectionsMentorList;
+      'sections.mentorship-package-list': SectionsMentorshipPackageList;
+      'sections.price-package-list': SectionsPricePackageList;
+      'sections.project-steps': SectionsProjectSteps;
       'sections.service-section': SectionsServiceSection;
       'sections.team-section': SectionsTeamSection;
       'static-component.hero': StaticComponentHero;
       'static-component.we-statment': StaticComponentWeStatment;
+      'static-component.what-we-do': StaticComponentWhatWeDo;
     }
   }
 }

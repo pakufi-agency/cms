@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_mentor_lists",
+  "info": {
+    "displayName": "MentorList"
+  },
+  "options": {},
+  "attributes": {
+    "mentors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mentor.mentor"
+    }
+  }
+}
