@@ -74,7 +74,7 @@ You can access it via: https://cloud.strapi.io (ask for credential)
 
 Whenever code is pushed to `main`, it will automatically be deployed on production.
 
-Content or data needs to manually be transfer to production via Strapi CLI `npm run strapi transfer -- --to=REMOTE_STRAPI_INSTANCE_URL --to-token=APP_KEYS`
+Content or data needs to manually be transfer to production via Strapi CLI `npm run strapi transfer -- --to=REMOTE_STRAPI_INSTANCE_URL --to-token=TRANSFER_TOKEN_FULL_ACCESS`
 
 Production configuration are saved in Strapi Cloud.
 
