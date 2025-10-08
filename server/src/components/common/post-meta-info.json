@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_common_post_meta_infos",
+  "info": {
+    "displayName": "PostMetaInfo",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "readingTime": {
+      "type": "integer"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "metaImage": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

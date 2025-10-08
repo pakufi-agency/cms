@@ -102,6 +102,20 @@ export interface CommonNewsletter extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonPostMetaInfo extends Struct.ComponentSchema {
+  collectionName: 'components_common_post_meta_infos';
+  info: {
+    description: '';
+    displayName: 'PostMetaInfo';
+  };
+  attributes: {
+    metaDescription: Schema.Attribute.Text;
+    metaImage: Schema.Attribute.Media<'images' | 'files'>;
+    metaTitle: Schema.Attribute.String;
+    readingTime: Schema.Attribute.Integer;
+  };
+}
+
 export interface CommonSection extends Struct.ComponentSchema {
   collectionName: 'components_common_sections';
   info: {
@@ -416,6 +430,7 @@ declare module '@strapi/strapi' {
       'common.icon-title-subtitle': CommonIconTitleSubtitle;
       'common.linear-step': CommonLinearStep;
       'common.newsletter': CommonNewsletter;
+      'common.post-meta-info': CommonPostMetaInfo;
       'common.section': CommonSection;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;
