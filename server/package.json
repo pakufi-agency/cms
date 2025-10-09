@@ -5,9 +5,11 @@
   "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
-    "deploy": "strapi deploy",
-    "develop": "NODE_ENV=development strapi develop",
-    "develop-network": "HOST=0.0.0.0 strapi develop",
+    "old-deploy": "strapi deploy",
+    "predeploy": "rm -rf node_modules && npm install",
+    "deploy": "npm run predeploy && npm run build",
+    "develop": "NODE_ENV=development pnpm strapi develop",
+    "develop-network": "HOST=0.0.0.0 pnpm strapi develop",
     "start": "NODE_ENV=production strapi start",
     "strapi": "strapi"
   },
