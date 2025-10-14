@@ -4,11 +4,10 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "preinstall": "rm -rf node_modules pnpm-lock.yaml",
     "build": "strapi build",
     "start": "NODE_ENV=production strapi start",
-    "develop": "NODE_ENV=development pnpm strapi develop",
-    "develop-network": "HOST=0.0.0.0 pnpm strapi develop"
+    "develop": "NODE_ENV=development strapi develop",
+    "develop-network": "HOST=0.0.0.0 strapi develop"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.4",
