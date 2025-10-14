@@ -9,7 +9,8 @@ Before starting you will need:
 
 - local postgres (find out how to install and set up postgresdb in your local machine and create one user and one database for this project)
 - Nodejs (global)
-- npm (global)
+- pnpm (global) - used for local development
+- npm (global) - used by Strapi Cloud for deployment
 - Env variables in .env.development
 
 Create a local postgres DB and keep in mind the local database credentials.
@@ -20,13 +21,54 @@ Create a local postgres DB and keep in mind the local database credentials.
 - Secrets: You will have to ask to your team for these. They are not mandatory to run the project
 - `APP_KEYS` is needed to transfer the data between a local and remote version of Strapi
 
+Package Manager Setup
+This project uses pnpm for local development and npm for production deployment on Strapi Cloud (which doesn't support pnpm yet).
+Local Development (pnpm)
+bash# Install dependencies
+pnpm install
+
+### Start development server
+pnpm develop
+Production Deployment (npm - Strapi Cloud)
+Strapi Cloud automatically uses npm and the package-lock.json file for deployment.
+Keeping Both Package Managers in Sync
+When adding or removing dependencies, you must update both lock files:
+
+```
+bash
+# Add a new dependency
+pnpm add <package-name>
+
+# Update npm lock file
+npm install
+
+# Commit both lock files
+git add pnpm-lock.yaml package-lock.json package.json
+git commit -m "Add <package-name>"
+```
+
+```
+bash
+# Remove a dependency
+pnpm remove <package-name>
+
+# Update npm lock file
+npm install
+
+# Commit changes
+git add pnpm-lock.yaml package-lock.json package.json
+git commit -m "Remove <package-name>"
+Important: Both pnpm-lock.yaml and package-lock.json must be committed to the repository.
+```
+Important: Both `pnpm-lock.yaml` and `package-lock.json` must be committed to the repository.
+
 ## How to start:
 
 - clone the repo
-- npm i
+- pnpm i
 - cd /server
-- npm i
-- npm run develop
+- pnpm i
+- pnpm run develop
 
 Now you are running an new and empty instance of strapi.
 You want to have the same version of Strapi Production so you need to populate your local instance with Pakufi data.
