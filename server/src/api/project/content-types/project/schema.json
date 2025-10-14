@@ -57,6 +57,14 @@
     "metaDescription": {
       "type": "text",
       "required": true
+    },
+    "services": {
+      "type": "string",
+      "required": true
+    },
+    "projectTypes": {
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -686,7 +686,9 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       true
     >;
     metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    projectTypes: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.String & Schema.Attribute.Required;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -805,6 +807,39 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSinglePageSinglePage extends Struct.CollectionTypeSchema {
+  collectionName: 'single_pages';
+  info: {
+    description: '';
+    displayName: 'SinglePage';
+    pluralName: 'single-pages';
+    singularName: 'single-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'common.cta', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::single-page.single-page'
+    > &
+      Schema.Attribute.Private;
+    newsletter: Schema.Attribute.Component<'common.newsletter', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1429,6 +1464,7 @@ declare module '@strapi/strapi' {
       'api::project.project': ApiProjectProject;
       'api::question-answer.question-answer': ApiQuestionAnswerQuestionAnswer;
       'api::service.service': ApiServiceService;
+      'api::single-page.single-page': ApiSinglePageSinglePage;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "single_pages",
+  "info": {
+    "singularName": "single-page",
+    "pluralName": "single-pages",
+    "displayName": "SinglePage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "newsletter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.newsletter"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.cta"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

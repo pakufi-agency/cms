@@ -151,6 +151,7 @@ export interface CommonSection extends Struct.ComponentSchema {
       'oneToMany',
       'api::price-package.price-package'
     >;
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     question_answers: Schema.Attribute.Relation<
       'oneToMany',
       'api::question-answer.question-answer'
