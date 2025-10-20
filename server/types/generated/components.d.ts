@@ -109,9 +109,11 @@ export interface CommonPostMetaInfo extends Struct.ComponentSchema {
     displayName: 'PostMetaInfo';
   };
   attributes: {
-    metaDescription: Schema.Attribute.Text;
-    metaImage: Schema.Attribute.Media<'images' | 'files'>;
-    metaTitle: Schema.Attribute.String;
+    author: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
     readingTime: Schema.Attribute.Integer;
   };
 }
@@ -131,6 +133,7 @@ export interface CommonSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'none'>;
     barBallColor: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
+    blogGrid: Schema.Attribute.Component<'sections.blog-grid', true>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
     collaborators: Schema.Attribute.Relation<
       'oneToMany',
@@ -257,6 +260,16 @@ export interface CommonTextImageButtons extends Struct.ComponentSchema {
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     richText: Schema.Attribute.Blocks & Schema.Attribute.Required;
     textColor: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsBlogGrid extends Struct.ComponentSchema {
+  collectionName: 'components_sections_blog_grids';
+  info: {
+    displayName: 'blogGrid';
+  };
+  attributes: {
+    slug: Schema.Attribute.String;
   };
 }
 
@@ -436,6 +449,7 @@ declare module '@strapi/strapi' {
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;
       'common.text-image-buttons': CommonTextImageButtons;
+      'sections.blog-grid': SectionsBlogGrid;
       'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
       'sections.intro-single-page': SectionsIntroSinglePage;

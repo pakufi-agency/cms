@@ -382,10 +382,12 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    coverImage: Schema.Attribute.Media<'images' | 'files'>;
+    coverImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    excerpt: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -587,18 +589,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.team-section',
-        'sections.service-section',
-        'common.text-image-buttons',
-        'common.cta',
-        'sections.faq-section',
         'static-component.hero',
         'common.section',
         'common.sectionhalfbackground',
         'sections.intro-single-page',
         'common.newsletter',
         'static-component.what-we-do',
-        'common.boxes-text',
+        'common.cta',
       ]
     > &
       Schema.Attribute.Required &

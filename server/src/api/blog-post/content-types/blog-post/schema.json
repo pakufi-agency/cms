@@ -23,7 +23,7 @@
     "coverImage": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
@@ -38,6 +38,10 @@
       "type": "component",
       "repeatable": false,
       "component": "common.post-meta-info",
+      "required": true
+    },
+    "excerpt": {
+      "type": "text",
       "required": true
     }
   }

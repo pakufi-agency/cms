@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_blog_grids",
+  "info": {
+    "displayName": "blogGrid"
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    }
+  }
+}

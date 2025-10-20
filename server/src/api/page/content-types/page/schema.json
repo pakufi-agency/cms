@@ -43,18 +43,13 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.team-section",
-        "sections.service-section",
-        "common.text-image-buttons",
-        "common.cta",
-        "sections.faq-section",
         "static-component.hero",
         "common.section",
         "common.sectionhalfbackground",
         "sections.intro-single-page",
         "common.newsletter",
         "static-component.what-we-do",
-        "common.boxes-text"
+        "common.cta"
       ],
       "required": true
     },
