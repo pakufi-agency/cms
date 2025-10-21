@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_generals",
+  "info": {
+    "singularName": "page-general",
+    "pluralName": "page-generals",
+    "displayName": "PageGeneral",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "pageDescription": {
+      "type": "text",
+      "required": true
+    },
+    "Seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.seo",
+      "required": true
+    },
+    "internalBannerMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "common.section",
+        "common.sectionhalfbackground",
+        "common.cta",
+        "common.newsletter"
+      ]
+    }
+  }
+}

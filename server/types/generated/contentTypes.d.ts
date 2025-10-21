@@ -544,6 +544,50 @@ export interface ApiMentorshipProgramMentorshipProgram
   };
 }
 
+export interface ApiPageGeneralPageGeneral extends Struct.CollectionTypeSchema {
+  collectionName: 'page_generals';
+  info: {
+    description: '';
+    displayName: 'PageGeneral';
+    pluralName: 'page-generals';
+    singularName: 'page-general';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    internalBannerMedia: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-general.page-general'
+    > &
+      Schema.Attribute.Private;
+    pageDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    pageTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'common.section',
+        'common.sectionhalfbackground',
+        'common.cta',
+        'common.newsletter',
+      ]
+    >;
+    Seo: Schema.Attribute.Component<'common.seo', true> &
+      Schema.Attribute.Required;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -1456,6 +1500,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::mentor.mentor': ApiMentorMentor;
       'api::mentorship-program.mentorship-program': ApiMentorshipProgramMentorshipProgram;
+      'api::page-general.page-general': ApiPageGeneralPageGeneral;
       'api::page.page': ApiPagePage;
       'api::price-package.price-package': ApiPricePackagePricePackage;
       'api::project.project': ApiProjectProject;
