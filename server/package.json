@@ -4,26 +4,30 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
+    "strapi": "strapi",
     "build": "strapi build",
     "start": "NODE_ENV=production strapi start",
     "develop": "NODE_ENV=development strapi develop",
-    "develop-network": "HOST=0.0.0.0 strapi develop"
+    "develop-network": "HOST=0.0.0.0 strapi develop",
+    "transfer:to:production": "dotenv -e .env.production -- sh -c 'npx strapi transfer --to=$STRAPI_PRODUCTION_URL --to-token=$TRANSFER_TOKEN_FULL_ACCESS --force'"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.4",
     "@strapi/plugin-graphql": "^5.5.0",
     "@strapi/plugin-users-permissions": "5.10.4",
     "@strapi/strapi": "5.10.4",
+    "pg": "^8.13.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "pg": "^8.13.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+      "cross-env": "^10.1.0",
+    "dotenv-cli": "^10.0.0",
     "typescript": "^5"
   },
   "engines": {
