@@ -578,7 +578,7 @@ export interface ApiPageGeneralPageGeneral extends Struct.CollectionTypeSchema {
         'common.newsletter',
       ]
     >;
-    Seo: Schema.Attribute.Component<'common.seo', true> &
+    SEO: Schema.Attribute.Component<'common.seo', false> &
       Schema.Attribute.Required;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
