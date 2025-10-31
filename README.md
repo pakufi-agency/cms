@@ -116,7 +116,11 @@ You can access it via: https://cloud.strapi.io (ask for credential)
 
 Whenever code is pushed to `main`, it will automatically be deployed on production.
 
-Content or data needs to manually be transfer to production via Strapi CLI `npm run strapi transfer -- --to=REMOTE_STRAPI_INSTANCE_URL --to-token=TRANSFER_TOKEN_FULL_ACCESS`
+Content or data needs to manually be transfer to production. You can do in two ways:
+
+1. Via node script `npm run transfer:to:production`
+2. Via command line `npx strapi transfer --to=REMOTE_STRAPI_INSTANCE_URL --to-token=TRANSFER_TOKEN_FULL_ACCESS`
+
 
 Production configuration are saved in Strapi Cloud.
 
@@ -126,7 +130,7 @@ Backups are done with the `export` command from strapi.
 Every week, needs to be done this steps:
 
 - update local with production via `transfer` command
-- `export` local instance using `some-key` as encryption key i.e. `npm run strapi export -- --key some-key`
+- `export` local instance using `some-key` as encryption key i.e. `npm run strapi export -- --key some-key` or `npx strapi export --key some-key`
 - upload export file to github
 
 TODO: Automate this steps.
@@ -135,9 +139,16 @@ Unfortunately Strapi Cloud do not allow to export/import directly from productio
 And unfortunately again, it seems they often have a bug with the `transfer` command. Often the transfer get stuck at `assets`. This happen mostly when transfering from production to local but might happen also the other way around.
 For this reason, local export are very important.
 
+# Common Issue:
+
+- strapi cli commands are slightly different if you are using `npm` or `npx` or `strapi cli` directly. Keep an eye on details.
+
 ## Helpful resources
 
 https://docs.strapi.io/dev-docs/data-management
+
 https://docs.strapi.io/dev-docs/data-management/transfer
+
 https://docs.strapi.io/dev-docs/data-management/import
+
 https://docs.strapi.io/dev-docs/cli#strapi-export
