@@ -47,6 +47,9 @@
         "common.cta",
         "common.newsletter"
       ]
+    },
+    "pageBannerTitle": {
+      "type": "string"
     }
   }
 }

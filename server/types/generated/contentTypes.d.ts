@@ -566,6 +566,7 @@ export interface ApiPageGeneralPageGeneral extends Struct.CollectionTypeSchema {
       'api::page-general.page-general'
     > &
       Schema.Attribute.Private;
+    pageBannerTitle: Schema.Attribute.String;
     pageDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     pageTitle: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
@@ -616,6 +617,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
+    pageBannerTitle: Schema.Attribute.String & Schema.Attribute.Required;
     pageDescription: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

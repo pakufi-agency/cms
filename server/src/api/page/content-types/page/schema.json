@@ -77,6 +77,10 @@
           "localized": true
         }
       }
+    },
+    "pageBannerTitle": {
+      "type": "string",
+      "required": true
     }
   }
 }
