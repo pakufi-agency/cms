@@ -109,6 +109,16 @@
       },
       "type": "blocks",
       "required": false
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": [
+        "greenGradient",
+        "white"
+      ]
+    },
+    "isAdvisor": {
+      "type": "boolean"
     }
   }
 }

@@ -80,6 +80,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::team-member.team-member"
+    },
+    "buttonSectionCtaLabel": {
+      "type": "string"
+    },
+    "buttonSectionCtaLink": {
+      "type": "string"
     }
   }
 }

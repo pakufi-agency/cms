@@ -45,14 +45,21 @@ export interface CommonCta extends Struct.ComponentSchema {
     displayName: 'cta';
   };
   attributes: {
-    buttonCtaOneLabel: Schema.Attribute.String & Schema.Attribute.Required;
-    buttonCtaOneLink: Schema.Attribute.String & Schema.Attribute.Required;
+    buttonCtaOneLabel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Book a discovery call '>;
+    buttonCtaOneLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://pakufi.zohobookings.com/#/4746283000000044080'>;
     buttonCtaTwoLabel: Schema.Attribute.String;
     buttonCtaTwoLink: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Whether you\u2019re looking for a custom web solution, need expert guidance for your digital project, or want to collaborate with an ethical agency that values impact and innovation\u2014we\u2019re here to help!'>;
     isBig: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Let\u2019s talk about your project'>;
   };
 }
 
@@ -135,6 +142,8 @@ export interface CommonSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'green'>;
     blogGrid: Schema.Attribute.Component<'sections.blog-grid', true>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
+    buttonSectionCtaLabel: Schema.Attribute.String;
+    buttonSectionCtaLink: Schema.Attribute.String;
     collaborators: Schema.Attribute.Relation<
       'oneToMany',
       'api::collaborator.collaborator'
@@ -164,6 +173,7 @@ export interface CommonSection extends Struct.ComponentSchema {
     shapesVariation: Schema.Attribute.Enumeration<['none', 'one', 'two']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'none'>;
+    showTitle: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     subtitle: Schema.Attribute.String;
     team_members: Schema.Attribute.Relation<
       'oneToMany',
@@ -182,6 +192,33 @@ export interface CommonSection extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonSectionfullWidth extends Struct.ComponentSchema {
+  collectionName: 'components_common_sectionfull_widths';
+  info: {
+    description: '';
+    displayName: 'SectionfullWidth';
+  };
+  attributes: {
+    backgroundColor3: Schema.Attribute.String;
+    backgroundVariation3: Schema.Attribute.Enumeration<
+      ['none', 'two bars', 'three bars']
+    >;
+    barBallColor3: Schema.Attribute.Enumeration<['green', 'blue']>;
+    buttonSectionCtaLabel: Schema.Attribute.String;
+    buttonSectionCtaLink: Schema.Attribute.String;
+    collaborators: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborator.collaborator'
+    >;
+    descriptionColor3: Schema.Attribute.String;
+    sectionSubtitle3: Schema.Attribute.String;
+    sectionTitle3: Schema.Attribute.String & Schema.Attribute.Required;
+    shapesVariation3: Schema.Attribute.Enumeration<['none', 'one', 'two']>;
+    showTitle: Schema.Attribute.Boolean;
+    titleColor3: Schema.Attribute.String;
+  };
+}
+
 export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
   collectionName: 'components_common_section_half_backgrounds';
   info: {
@@ -193,6 +230,8 @@ export interface CommonSectionhalfbackground extends Struct.ComponentSchema {
     barBallColor2: Schema.Attribute.Enumeration<['green', 'blue']> &
       Schema.Attribute.DefaultTo<'green'>;
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
+    buttonSectionCtaLabel: Schema.Attribute.String;
+    buttonSectionCtaLink: Schema.Attribute.String;
     collaborators: Schema.Attribute.Relation<
       'oneToMany',
       'api::collaborator.collaborator'
@@ -446,6 +485,7 @@ declare module '@strapi/strapi' {
       'common.newsletter': CommonNewsletter;
       'common.post-meta-info': CommonPostMetaInfo;
       'common.section': CommonSection;
+      'common.sectionfull-width': CommonSectionfullWidth;
       'common.sectionhalfbackground': CommonSectionhalfbackground;
       'common.seo': CommonSeo;
       'common.text-image-buttons': CommonTextImageButtons;

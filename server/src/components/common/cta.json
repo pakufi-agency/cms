@@ -8,10 +8,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "Let’s talk about your project"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "default": "Whether you’re looking for a custom web solution, need expert guidance for your digital project, or want to collaborate with an ethical agency that values impact and innovation—we’re here to help!"
     },
     "media": {
       "type": "media",
@@ -25,11 +27,13 @@
     },
     "buttonCtaOneLabel": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "Book a discovery call "
     },
     "buttonCtaOneLink": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "https://pakufi.zohobookings.com/#/4746283000000044080"
     },
     "buttonCtaTwoLabel": {
       "type": "string"

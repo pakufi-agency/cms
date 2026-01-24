@@ -125,6 +125,16 @@
       "type": "component",
       "repeatable": true,
       "component": "sections.blog-grid"
+    },
+    "buttonSectionCtaLabel": {
+      "type": "string"
+    },
+    "buttonSectionCtaLink": {
+      "type": "string"
+    },
+    "showTitle": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

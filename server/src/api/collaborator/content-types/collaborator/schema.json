@@ -12,30 +12,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "fullName": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "jobPosition": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "email"
-    },
-    "profilePic": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "linkedinAbsoluteUrl": {
-      "type": "string"
+    "absoluteUrl": {
+      "type": "string",
+      "required": true
     },
-    "personalWebsiteAbsoluteUrl": {
-      "type": "string"
+    "logoHeight": {
+      "type": "integer"
+    },
+    "logoWidth": {
+      "type": "integer"
     }
   }
 }

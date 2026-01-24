@@ -1,0 +1,63 @@
+{
+  "collectionName": "components_common_sectionfull_widths",
+  "info": {
+    "displayName": "SectionfullWidth",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle3": {
+      "type": "string",
+      "required": true
+    },
+    "sectionSubtitle3": {
+      "type": "string"
+    },
+    "backgroundColor3": {
+      "type": "string"
+    },
+    "titleColor3": {
+      "type": "string"
+    },
+    "descriptionColor3": {
+      "type": "string"
+    },
+    "barBallColor3": {
+      "type": "enumeration",
+      "enum": [
+        "green",
+        "blue"
+      ]
+    },
+    "shapesVariation3": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "one",
+        "two"
+      ]
+    },
+    "backgroundVariation3": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "two bars",
+        "three bars"
+      ]
+    },
+    "buttonSectionCtaLabel": {
+      "type": "string"
+    },
+    "buttonSectionCtaLink": {
+      "type": "string"
+    },
+    "collaborators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::collaborator.collaborator"
+    },
+    "showTitle": {
+      "type": "boolean"
+    }
+  }
+}

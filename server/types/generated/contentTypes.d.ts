@@ -420,21 +420,21 @@ export interface ApiCollaboratorCollaborator
     draftAndPublish: true;
   };
   attributes: {
+    absoluteUrl: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    fullName: Schema.Attribute.String & Schema.Attribute.Required;
-    jobPosition: Schema.Attribute.String & Schema.Attribute.Required;
-    linkedinAbsoluteUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::collaborator.collaborator'
     > &
       Schema.Attribute.Private;
-    personalWebsiteAbsoluteUrl: Schema.Attribute.String;
-    profilePic: Schema.Attribute.Media<'images' | 'files'>;
+    logo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    logoHeight: Schema.Attribute.Integer;
+    logoWidth: Schema.Attribute.Integer;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -642,6 +642,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'common.newsletter',
         'static-component.what-we-do',
         'common.cta',
+        'common.sectionfull-width',
       ]
     > &
       Schema.Attribute.Required &
@@ -906,6 +907,7 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    backgroundColor: Schema.Attribute.Enumeration<['greenGradient', 'white']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -929,6 +931,7 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    isAdvisor: Schema.Attribute.Boolean;
     jobPosition: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
