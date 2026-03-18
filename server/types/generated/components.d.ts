@@ -144,6 +144,10 @@ export interface CommonSection extends Struct.ComponentSchema {
     boxesText: Schema.Attribute.Component<'common.boxes-text', true>;
     buttonSectionCtaLabel: Schema.Attribute.String;
     buttonSectionCtaLink: Schema.Attribute.String;
+    client_reviews: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client-review.client-review'
+    >;
     collaborators: Schema.Attribute.Relation<
       'oneToMany',
       'api::collaborator.collaborator'

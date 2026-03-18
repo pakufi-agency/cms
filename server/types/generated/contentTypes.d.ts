@@ -407,6 +407,50 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiClientReviewClientReview
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'client_reviews';
+  info: {
+    description: '';
+    displayName: 'ClientReview';
+    pluralName: 'client-reviews';
+    singularName: 'client-review';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    company: Schema.Attribute.String;
+    companyUrl: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client-review.client-review'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    rating: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+        },
+        number
+      >;
+    reviewContent: Schema.Attribute.Text & Schema.Attribute.Required;
+    reviewTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCollaboratorCollaborator
   extends Struct.CollectionTypeSchema {
   collectionName: 'collaborators';
@@ -1501,6 +1545,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
+      'api::client-review.client-review': ApiClientReviewClientReview;
       'api::collaborator.collaborator': ApiCollaboratorCollaborator;
       'api::footer.footer': ApiFooterFooter;
       'api::mentor.mentor': ApiMentorMentor;

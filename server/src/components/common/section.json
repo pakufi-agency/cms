@@ -135,6 +135,11 @@
     "showTitle": {
       "type": "boolean",
       "default": true
+    },
+    "client_reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client-review.client-review"
     }
   }
 }
