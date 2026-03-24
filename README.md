@@ -15,27 +15,37 @@ Before starting you will need:
 
 Create a local postgres DB and keep in mind the local database credentials.
 
-### Envernoment Variables
+### Package Manager Setup
 
-- Database: Fill in the values of these variables names based on your local postgres database
-- Secrets: You will have to ask to your team for these. They are not mandatory to run the project
-- `APP_KEYS` is needed to transfer the data between a local and remote version of Strapi
+This project uses **pnpm for local development** and **npm for production deployment** on Strapi Cloud.
 
-Package Manager Setup
-This project uses pnpm for local development and npm for production deployment on Strapi Cloud (which doesn't support pnpm yet).
-Local Development (pnpm)
-bash# Install dependencies
+**Why both package managers?**
+- **Local Development**: Uses pnpm for better performance and disk space efficiency
+- **Strapi Cloud**: Uses npm due to pnpm compatibility issues with Strapi Cloud's build environment
+
+**Strapi Cloud Configuration:**
+The production deployment is configured to use npm via the environment variable:
+```
+NPM_CONFIG_PACKAGE_MANAGER=npm
+```
+This is set directly in Strapi Cloud environment variables, not in the codebase.
+
+### Local Development (pnpm)
+```bash
+# Install dependencies
 pnpm install
 
-### Start development server
+# Start development server
 pnpm develop
-Production Deployment (npm - Strapi Cloud)
+```
+
+### Production Deployment (npm - Strapi Cloud)
 Strapi Cloud automatically uses npm and the package-lock.json file for deployment.
-Keeping Both Package Managers in Sync
+
+### Keeping Both Package Managers in Sync
 When adding or removing dependencies, you must update both lock files:
 
-```
-bash
+```bash
 # Add a new dependency
 pnpm add <package-name>
 
@@ -47,8 +57,7 @@ git add pnpm-lock.yaml package-lock.json package.json
 git commit -m "Add <package-name>"
 ```
 
-```
-bash
+```bash
 # Remove a dependency
 pnpm remove <package-name>
 
@@ -58,9 +67,9 @@ npm install
 # Commit changes
 git add pnpm-lock.yaml package-lock.json package.json
 git commit -m "Remove <package-name>"
-Important: Both pnpm-lock.yaml and package-lock.json must be committed to the repository.
 ```
-Important: Both `pnpm-lock.yaml` and `package-lock.json` must be committed to the repository.
+
+**Important:** Both `pnpm-lock.yaml` and `package-lock.json` must be committed to the repository.
 
 ## How to start:
 
