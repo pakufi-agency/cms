@@ -9,75 +9,55 @@ Before starting you will need:
 
 - local postgres (find out how to install and set up postgresdb in your local machine and create one user and one database for this project)
 - Nodejs (global)
-- pnpm (global) - used for local development
-- npm (global) - used by Strapi Cloud for deployment
+- npm (global) - used for both local development and production deployment
 - Env variables in .env.development
 
 Create a local postgres DB and keep in mind the local database credentials.
 
 ### Package Manager Setup
 
-This project uses **pnpm for local development** and **npm for production deployment** on Strapi Cloud.
+This project uses **npm** for both local development and production deployment on Strapi Cloud.
 
-**Why both package managers?**
-- **Local Development**: Uses pnpm for better performance and disk space efficiency
-- **Strapi Cloud**: Uses npm due to pnpm compatibility issues with Strapi Cloud's build environment
+**Why npm only?**
+- **Simplicity**: Single package manager across all environments
+- **Strapi Cloud Compatibility**: npm works reliably with Strapi Cloud's build environment
+- **No dual lock file management**: Cleaner repository structure
 
-**Strapi Cloud Configuration:**
-The production deployment is configured to use npm via the environment variable:
-```
-NPM_CONFIG_PACKAGE_MANAGER=npm
-```
-This is set directly in Strapi Cloud environment variables, not in the codebase.
-
-### Local Development (pnpm)
+### Local Development (npm)
 ```bash
 # Install dependencies
-pnpm install
+npm install
 
 # Start development server
-pnpm develop
+npm run develop
 ```
 
 ### Production Deployment (npm - Strapi Cloud)
 Strapi Cloud automatically uses npm and the package-lock.json file for deployment.
 
-### Keeping Both Package Managers in Sync
-When adding or removing dependencies, you must update both lock files:
+### Dependency Management
+When adding or removing dependencies, simply use npm:
 
 ```bash
 # Add a new dependency
-pnpm add <package-name>
+npm install <package-name>
 
-# Update npm lock file
-npm install
-
-# Commit both lock files
-git add pnpm-lock.yaml package-lock.json package.json
-git commit -m "Add <package-name>"
-```
-
-```bash
 # Remove a dependency
-pnpm remove <package-name>
-
-# Update npm lock file
-npm install
+npm uninstall <package-name>
 
 # Commit changes
-git add pnpm-lock.yaml package-lock.json package.json
-git commit -m "Remove <package-name>"
+git add package.json package-lock.json
+git commit -m "Update dependencies"
 ```
 
-**Important:** Both `pnpm-lock.yaml` and `package-lock.json` must be committed to the repository.
+**Important:** Only `package-lock.json` needs to be committed to the repository.
 
 ## How to start:
 
 - clone the repo
-- pnpm i
 - cd /server
-- pnpm i
-- pnpm run develop
+- npm install
+- npm run develop
 
 Now you are running an new and empty instance of strapi.
 You want to have the same version of Strapi Production so you need to populate your local instance with Pakufi data.

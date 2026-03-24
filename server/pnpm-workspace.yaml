@@ -1,7 +1,0 @@
-ignoredBuiltDependencies:
-  - '@apollo/protobufjs'
-  - '@swc/core'
-  - core-js-pure
-  - esbuild
-onlyBuiltDependencies:
-  - sharp
