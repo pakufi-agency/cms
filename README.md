@@ -18,39 +18,9 @@ Create a local postgres DB and keep in mind the local database credentials.
 
 This project uses **npm** for both local development and production deployment on Strapi Cloud.
 
-**Why npm only?**
-- **Simplicity**: Single package manager across all environments
-- **Strapi Cloud Compatibility**: npm works reliably with Strapi Cloud's build environment
-- **No dual lock file management**: Cleaner repository structure
+**Why npm?**
 
-### Local Development (npm)
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run develop
-```
-
-### Production Deployment (npm - Strapi Cloud)
-Strapi Cloud automatically uses npm and the package-lock.json file for deployment.
-
-### Dependency Management
-When adding or removing dependencies, simply use npm:
-
-```bash
-# Add a new dependency
-npm install <package-name>
-
-# Remove a dependency
-npm uninstall <package-name>
-
-# Commit changes
-git add package.json package-lock.json
-git commit -m "Update dependencies"
-```
-
-**Important:** Only `package-lock.json` needs to be committed to the repository.
+**Strapi Cloud Compatibility**: npm works reliably with Strapi Cloud's build environment. Pnpm doesn't seems to work properly with Strapi Cloud's build environment.
 
 ## How to start:
 
@@ -89,14 +59,32 @@ Once you are able to run your instance, double check that is everything up-to-da
 
 #### Before starting to work
 
-1. Pull updated content from Production Strapi instance: Go in your local Strapi directory and run `npm run strapi transfer -- --from ${STRAPI_PROD_URL}/admin`. If you have problems with `strapi transfer`, you can restore the last backups. If you do so, please check carefully that the last backups is up to date with production. (check the Backups section for more information).
-2. create a new branch from `develop` and give it a meaningful name following best practice
+1. **Production is source of truth** - Always sync FROM production to local
+2. Pull updated content from Production Strapi instance: Go in your local Strapi directory and run:
+   ```bash
+   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=cbd3c12342d945c36ebc80bb5c217b737ad61677bdc6b99d0f996e0ba6a456c0fe691532eba2162f54efd53e2fb0c5b2a8ed37dc512e8e97aaad50338f05159a12fd0941c16c1e04f46009916638f936a98e303c5452546f3d06f05926f22ff789920e7c4871f3ff4a348cb1da38fc8219b9023d7411c5acb37e70bde04f259b --exclude files
+   ```
+   - `--exclude files` skips assets due to Strapi transfer bug with assets
+   - Assets come from Cloudflare R2 bucket, not database
+3. Create a new branch from `develop` and give it a meaningful name following best practice
 
 #### After working
 
 1. If you change Strapi Content-Type, commit your changes to this repo
 2. Open a PR and wait to be merge
 3. If you have to change or add new data (Content Manager in Strapi), do it from the Production instance. Be sure to coordinate with your manager before changing any data that is already live
+
+#### After deployment
+
+1. After deploying to production, sync local again to stay in sync:
+   ```bash
+   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=cbd3c12342d945c36ebc80bb5c217b737ad61677bdc6b99d0f996e0ba6a456c0fe691532eba2162f54efd53e2fb0c5b2a8ed37dc512e8e97aaad50338f05159a12fd0941c16c1e04f46009916638f936a98e303c5452546f3d06f05926f22ff789920e7c4871f3ff4a348cb1da38fc8219b9023d7411c5acb37e70bde04f259b --exclude files
+   ```
+
+**IMPORTANT:**
+- **Never use `transfer --to`** - it makes local the source of truth
+- **Always use `transfer --from`** - keeps production as source of truth
+- **Always use `--exclude files`** - avoids asset transfer bugs
 
 ## Deployment
 
@@ -105,11 +93,14 @@ You can access it via: https://cloud.strapi.io (ask for credential)
 
 Whenever code is pushed to `main`, it will automatically be deployed on production.
 
-Content or data needs to manually be transfer to production. You can do in two ways:
+Content or data needs to manually be transfer to production. You can do in several ways:
 
-1. Via node script `npm run transfer:to:production`
-2. Via command line `npx strapi transfer --to=REMOTE_STRAPI_INSTANCE_URL --to-token=TRANSFER_TOKEN_FULL_ACCESS`
+**RECOMMENDED:** Always use `transfer --from` to keep production as source of truth
 
+Other ways to AVOID unless absolutely necessary:
+
+1. Via node script `npm run transfer:to:production` (AVOID - makes local source of truth)
+2. Via command line `npx strapi transfer --to=REMOTE_STRAPI_INSTANCE_URL --to-token=TRANSFER_TOKEN_FULL_ACCESS` (AVOID - makes local source of truth)
 
 Production configuration are saved in Strapi Cloud.
 
