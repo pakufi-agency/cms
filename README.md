@@ -110,7 +110,7 @@ Backups are done with the `export` command from strapi.
 Every week, needs to be done this steps:
 
 - update local with production via `transfer` command
-- `export` local instance using `some-key` as encryption key i.e. `npm run strapi export -- --key some-key` or `npx strapi export --key some-key`
+- `export` local instance using `some-key` as encryption key i.e. `npm run strapi export -- --key some-key --exclude files` or `npx strapi export --key some-key --exclude files`
 - upload export file to github
 
 TODO: Automate this steps.
