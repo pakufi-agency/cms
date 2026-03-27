@@ -62,7 +62,7 @@ Once you are able to run your instance, double check that is everything up-to-da
 1. **Production is source of truth** - Always sync FROM production to local
 2. Pull updated content from Production Strapi instance: Go in your local Strapi directory and run:
    ```bash
-   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=TRANSFER_TOKEN_FULL_ACCESS--exclude files
+   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=TRANSFER_TOKEN_FULL_ACCESS --exclude files
    ```
    - `--exclude files` skips assets due to Strapi transfer bug with assets
    - Assets come from Cloudflare R2 bucket, not database
@@ -78,7 +78,7 @@ Once you are able to run your instance, double check that is everything up-to-da
 
 1. After deploying to production, sync local again to stay in sync:
    ```bash
-   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=TRANSFER_TOKEN_FULL_ACCESS--exclude files
+   npx strapi transfer --from=https://energized-charity-48b64f9469.strapiapp.com/admin --from-token=TRANSFER_TOKEN_FULL_ACCESS --exclude files
    ```
 
 **IMPORTANT:**
