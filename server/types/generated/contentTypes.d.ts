@@ -860,6 +860,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    descriptionShort: Schema.Attribute.Blocks & Schema.Attribute.Required;
     icon: Schema.Attribute.Enumeration<
       [
         'brush',
@@ -870,6 +871,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         'socialMedia',
       ]
     > &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -888,6 +890,11 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'common.seo', false> &
+      Schema.Attribute.Required;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     subtitle: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

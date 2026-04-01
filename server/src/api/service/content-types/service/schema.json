@@ -39,7 +39,8 @@
         "management",
         "planning",
         "socialMedia"
-      ]
+      ],
+      "required": true
     },
     "descriptionRichText": {
       "pluginOptions": {
@@ -58,6 +59,21 @@
       },
       "type": "string",
       "required": true
+    },
+    "descriptionShort": {
+      "type": "blocks",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.seo",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
