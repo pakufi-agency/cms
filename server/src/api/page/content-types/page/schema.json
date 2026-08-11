@@ -50,7 +50,9 @@
         "common.newsletter",
         "static-component.what-we-do",
         "common.cta",
-        "common.sectionfull-width"
+        "common.sectionfull-width",
+        "sections.icon-title-subtitle",
+        "sections.variant"
       ],
       "required": true
     },
