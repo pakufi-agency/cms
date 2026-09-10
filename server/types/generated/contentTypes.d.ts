@@ -687,6 +687,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'static-component.what-we-do',
         'common.cta',
         'common.sectionfull-width',
+        'common.icon-title-subtitle',
       ]
     > &
       Schema.Attribute.Required &

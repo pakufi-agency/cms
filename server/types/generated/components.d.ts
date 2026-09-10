@@ -3,10 +3,12 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface CommonBoxesText extends Struct.ComponentSchema {
   collectionName: 'components_common_boxes_texts';
   info: {
+    description: '';
     displayName: 'BoxesText';
   };
   attributes: {
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    variant: Schema.Attribute.Enumeration<['positive', 'negative', 'neutral']>;
   };
 }
 

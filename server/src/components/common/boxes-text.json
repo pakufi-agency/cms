@@ -1,13 +1,22 @@
 {
   "collectionName": "components_common_boxes_texts",
   "info": {
-    "displayName": "BoxesText"
+    "displayName": "BoxesText",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "content": {
       "type": "blocks",
       "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "positive",
+        "negative",
+        "neutral"
+      ]
     }
   }
 }
