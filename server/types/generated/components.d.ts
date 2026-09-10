@@ -345,19 +345,6 @@ export interface SectionsFaqSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsIconTitleSubtitle extends Struct.ComponentSchema {
-  collectionName: 'components_sections_icon_title_subtitles';
-  info: {
-    description: '';
-    displayName: 'Icon-Title-Subtitle';
-  };
-  attributes: {
-    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitle: Schema.Attribute.Text;
-    Title: Schema.Attribute.String;
-  };
-}
-
 export interface SectionsIntroSinglePage extends Struct.ComponentSchema {
   collectionName: 'components_sections_intro_single_pages';
   info: {
@@ -449,30 +436,6 @@ export interface SectionsTeamSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsVariant extends Struct.ComponentSchema {
-  collectionName: 'components_sections_variants';
-  info: {
-    displayName: 'variant';
-  };
-  attributes: {
-    variant: Schema.Attribute.Enumeration<['positive', 'negative', 'neutral']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'neutral'>;
-  };
-}
-
-export interface SectionsVariantt extends Struct.ComponentSchema {
-  collectionName: 'components_sections_variantts';
-  info: {
-    displayName: 'Variantt';
-  };
-  attributes: {
-    item_variant: Schema.Attribute.Enumeration<
-      ['positive', 'negative', 'neutral']
-    >;
-  };
-}
-
 export interface StaticComponentHero extends Struct.ComponentSchema {
   collectionName: 'components_static_component_heroes';
   info: {
@@ -516,16 +479,6 @@ export interface StaticComponentWhatWeDo extends Struct.ComponentSchema {
   };
 }
 
-export interface VariantVariant extends Struct.ComponentSchema {
-  collectionName: 'components_variant_variants';
-  info: {
-    displayName: 'variant';
-  };
-  attributes: {
-    Variant: Schema.Attribute.Enumeration<['positive', 'negative', 'neutral']>;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -545,7 +498,6 @@ declare module '@strapi/strapi' {
       'sections.blog-grid': SectionsBlogGrid;
       'sections.collaborator-list': SectionsCollaboratorList;
       'sections.faq-section': SectionsFaqSection;
-      'sections.icon-title-subtitle': SectionsIconTitleSubtitle;
       'sections.intro-single-page': SectionsIntroSinglePage;
       'sections.mentor-list': SectionsMentorList;
       'sections.mentorship-package-list': SectionsMentorshipPackageList;
@@ -553,12 +505,9 @@ declare module '@strapi/strapi' {
       'sections.project-steps': SectionsProjectSteps;
       'sections.service-section': SectionsServiceSection;
       'sections.team-section': SectionsTeamSection;
-      'sections.variant': SectionsVariant;
-      'sections.variantt': SectionsVariantt;
       'static-component.hero': StaticComponentHero;
       'static-component.we-statment': StaticComponentWeStatment;
       'static-component.what-we-do': StaticComponentWhatWeDo;
-      'variant.variant': VariantVariant;
     }
   }
 }
